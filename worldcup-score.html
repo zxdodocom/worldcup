@@ -215,21 +215,21 @@
             opacity: 1;
         }
 
-        /* 技能发动 — 国旗红光特效 */
+        /* 技能发动 — 国旗淡蓝光特效 */
         .team-card.skill-glow::before {
             content: '';
             position: absolute;
             inset: -6px;
             border-radius: 20px;
-            background: radial-gradient(ellipse at 50% 30%, rgba(255,60,60,.45) 0%, transparent 70%);
+            background: radial-gradient(ellipse at 50% 30%, rgba(0,180,255,.35) 0%, transparent 70%);
             animation: skillGlowPulse .8s ease-in-out 3;
             pointer-events: none;
             z-index: 0;
         }
         @keyframes skillGlowPulse {
-            0%   { opacity: 0.2; transform: scale(0.95); }
-            50%  { opacity: 1;   transform: scale(1.05); }
-            100% { opacity: 0.2; transform: scale(0.95); }
+            0%   { opacity: 0.15; transform: scale(0.95); }
+            50%  { opacity: 0.8;  transform: scale(1.05); }
+            100% { opacity: 0.15; transform: scale(0.95); }
         }
 
         /* ===== 中央比分 ===== */
