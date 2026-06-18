@@ -952,11 +952,13 @@
                 // --- 暴击判定（敏捷影响）---
                 const critRateA = 0.005 + (effAgiA / 100) * 0.045;
                 const critRateB = 0.005 + (effAgiB / 100) * 0.045;
-                if (Math.random() < critRateA) {
-                    curA += 2; triggerCrit(scoreA);
+                if (curA < 5 && Math.random() < critRateA) {
+                    const add = Math.min(2, 5 - curA);
+                    curA += add; triggerCrit(scoreA);
                 }
-                if (Math.random() < critRateB) {
-                    curB += 2; triggerCrit(scoreB);
+                if (curB < 5 && Math.random() < critRateB) {
+                    const add = Math.min(2, 5 - curB);
+                    curB += add; triggerCrit(scoreB);
                 }
                 numA.textContent = curA;
                 numB.textContent = curB;
