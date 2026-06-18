@@ -16,13 +16,49 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             min-height: 100dvh;
-            background: radial-gradient(ellipse at 50% 0%, #1a3a1a 0%, #0d1b0d 60%, #000 100%);
+            background:
+                /* 底部微光 — 三国配色渐变 */
+                radial-gradient(ellipse at 50% 100%, rgba(206,17,38,.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(59,59,110,.10) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 80%, rgba(0,104,71,.10) 0%, transparent 40%),
+                /* 顶部主场馆灯光 */
+                radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.06) 0%, transparent 50%),
+                /* 深色底 */
+                linear-gradient(180deg, #1a1020 0%, #0d0a14 40%, #050308 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
+        }
+
+        /* 三国国旗装饰线 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                #3C3B6E 0%, #B22234 10%, #FFFFFF 18%, #B22234 26%, #3C3B6E 33%,
+                #006847 33%, #FFFFFF 42%, #CE1126 50%, #FFFFFF 58%, #006847 66%,
+                #FF0000 66%, #FFFFFF 74%, #FF0000 83%, #FFFFFF 91%, #FF0000 100%
+            );
+            z-index: 99;
+            box-shadow: 0 0 20px rgba(255,255,255,.1);
+        }
+        /* 底部装饰线 */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                #FF0000 0%, #FFFFFF 12%, #FF0000 25%, #FFFFFF 37%, #FF0000 50%,
+                #CE1126 50%, #FFFFFF 58%, #006847 66%, #FFFFFF 75%, #CE1126 83%, #006847 100%
+            );
+            z-index: 99;
+            box-shadow: 0 0 20px rgba(255,255,255,.1);
         }
 
         .container {
