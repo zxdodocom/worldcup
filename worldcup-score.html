@@ -707,13 +707,13 @@
         return FIFA_RANKINGS[key] || FIFA_RANKINGS[key.toLowerCase()] || null;
     }
 
-    // 进球概率：攻击 vs 防御，平方差额映射到 7%~31%
+    // 进球概率：攻击 vs 防御，平方差额映射到 7%~29%
     function goalChance(atk, def) {
-        if (!atk || !def) return 0.13;
+        if (!atk || !def) return 0.12;
         const total = atk + def;
         const strength = atk / total;
-        const prob = 0.07 + (strength * strength * 0.24);
-        return Math.min(Math.max(prob, 0.07), 0.31);
+        const prob = 0.07 + (strength * strength * 0.22);
+        return Math.min(Math.max(prob, 0.07), 0.29);
     }
 
     // ===================================================================
