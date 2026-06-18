@@ -822,14 +822,6 @@
         return SKILL_DATA[key] || SKILL_DATA[SKILL_NAME_MAP[key.toLowerCase()]] || null;
     }
 
-    // 技能发动提示：国旗下方技能名
-    function triggerSkill(teamName, skillName, callEl) {
-        callEl.textContent = `⚡ ${skillName}`;
-        callEl.style.color = '#00d4ff';
-        callEl.classList.add('show');
-        setTimeout(() => callEl.classList.remove('show'), 1500);
-    }
-
     // ===================================================================
     //  国旗渲染
     // ===================================================================
@@ -921,7 +913,6 @@
             clockDisplay.textContent = m + "'";
 
             if (GOAL_MINS.has(m)) {
-                try {
                 // --- 技能判定（10%概率发动）---
                 let atkBoostA = 0, defBoostA = 0, agiBoostA = 0;
                 let atkBoostB = 0, defBoostB = 0, agiBoostB = 0;
@@ -969,7 +960,6 @@
                 }
                 numA.textContent = curA;
                 numB.textContent = curB;
-                } catch(e) { console.error('ROLL error:', e.message, e.stack); }
             }
 
             // 第 45 分钟 — 中场上半场结束，记录半场比分
