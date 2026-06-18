@@ -708,11 +708,11 @@
     }
 
     // 进球概率：越强（排名数字越小）越容易进球
-    // 公式：对手排名 / (自己排名 + 对手排名)，上限 30%，下限 8%
+    // 公式：对手排名 / (自己排名 + 对手排名)，上限 40%，下限 8%
     function goalChance(myRank, oppRank) {
         if (!myRank || !oppRank) return 0.30;
         const strength = oppRank / (myRank + oppRank);
-        return Math.min(Math.max(strength, 0.08), 0.30);
+        return Math.min(Math.max(strength, 0.08), 0.40);
     }
 
     // 进球特效：比分闪光 + 全屏 GOAL 庆祝
