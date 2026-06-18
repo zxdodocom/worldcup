@@ -162,6 +162,25 @@
             color: rgba(255,255,240,.25);
             font-weight: 400;
         }
+        .team-card .skill-call {
+            font-size: 11px;
+            font-weight: 700;
+            color: #00d4ff;
+            text-align: center;
+            min-height: 18px;
+            line-height: 18px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px rgba(0,212,255,.4);
+            opacity: 0;
+            transition: opacity .3s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        .team-card .skill-call.show {
+            opacity: 1;
+        }
 
         /* ===== 中央比分 ===== */
         .score-section {
@@ -466,6 +485,7 @@
             .team-card { padding: 12px 8px 14px; gap: 7px; }
             .team-card .flag { width: 50px; height: 38px; }
             .team-card .team-name { font-size: 13px; }
+            .team-card .skill-call { font-size: 9px; min-height: 15px; line-height: 15px; }
             .score-box { width: 52px; height: 52px; font-size: 26px; border-radius: 12px; }
             .score-colon { font-size: 24px; }
             .match-clock { font-size: 20px; }
@@ -537,6 +557,7 @@
             <div class="team-name" id="nameA">
                 <span class="gray">主队</span>
             </div>
+            <div class="skill-call" id="skillCallA"></div>
         </div>
 
         <!-- 比分 -->
@@ -572,6 +593,7 @@
             <div class="team-name" id="nameB">
                 <span class="gray">客队</span>
             </div>
+            <div class="skill-call" id="skillCallB"></div>
         </div>
     </div>
 
@@ -903,13 +925,18 @@
         return SKILL_DATA[key] || SKILL_DATA[SKILL_NAME_MAP[key.toLowerCase()]] || null;
     }
 
-    // 技能发动提示
-    function triggerSkill(teamName, skillName) {
+    // 技能发动提示：横幅 + 国旗下方
+    function triggerSkill(teamName, skillName, el) {
         skillText.textContent = `✦ ${teamName} · ${skillName} ✦`;
         skillBanner.classList.remove('show');
         void skillBanner.offsetHeight;
         skillBanner.classList.add('show');
         setTimeout(() => skillBanner.classList.remove('show'), 1300);
+
+        // 国旗下方显示技能名
+        el.textContent = `⚡ ${skillName}`;
+        el.classList.add('show');
+        setTimeout(() => el.classList.remove('show'), 1500);
     }
 
     // ===================================================================
@@ -940,6 +967,8 @@
     const critBanner  = document.getElementById('critBanner');
     const skillBanner = document.getElementById('skillBanner');
     const skillText   = document.getElementById('skillText');
+    const skillCallA  = document.getElementById('skillCallA');
+    const skillCallB  = document.getElementById('skillCallB');
     const btnRoll  = document.getElementById('btnRoll');
     const result   = document.getElementById('resultText');
 
@@ -1023,6 +1052,8 @@
         goalBanner.classList.remove('show');
         critBanner.classList.remove('show');
         skillBanner.classList.remove('show');
+        skillCallA.classList.remove('show'); skillCallA.textContent = '';
+        skillCallB.classList.remove('show'); skillCallB.textContent = '';
         // 清空上半场/全场文字，防止缓存残留
         htA.textContent = '0'; htB.textContent = '0';
         ftA.textContent = '0'; ftB.textContent = '0';
@@ -1047,13 +1078,13 @@
                 if (sdA && Math.random() < 0.10) {
                     atkBoostA = sdA[1]; defBoostA = sdA[2]; agiBoostA = sdA[3];
                     skillNameA = sdA[0];
-                    triggerSkill(teamNameA, skillNameA);
+                    triggerSkill(teamNameA, skillNameA, skillCallA);
                 }
                 const sdB = getSkillData(teamNameB);
                 if (sdB && Math.random() < 0.10) {
                     atkBoostB = sdB[1]; defBoostB = sdB[2]; agiBoostB = sdB[3];
                     skillNameB = sdB[0];
-                    triggerSkill(teamNameB, skillNameB);
+                    triggerSkill(teamNameB, skillNameB, skillCallB);
                 }
 
                 // --- 计算有效攻击/防御/敏捷（含技能加成）---
@@ -1140,6 +1171,8 @@
         goalBanner.classList.remove('show');
         critBanner.classList.remove('show');
         skillBanner.classList.remove('show');
+        skillCallA.classList.remove('show'); skillCallA.textContent = '';
+        skillCallB.classList.remove('show'); skillCallB.textContent = '';
         htA.textContent = '0'; htB.textContent = '0';
         ftA.textContent = '0'; ftB.textContent = '0';
         numA.textContent = '0'; numB.textContent = '0';
