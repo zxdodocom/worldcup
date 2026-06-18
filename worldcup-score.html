@@ -141,6 +141,7 @@
 
         /* 队伍卡片 */
         .team-card {
+            position: relative;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -212,6 +213,23 @@
         }
         .team-card .call-line.show {
             opacity: 1;
+        }
+
+        /* 技能发动 — 国旗红光特效 */
+        .team-card.skill-glow::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 20px;
+            background: radial-gradient(ellipse at 50% 30%, rgba(255,60,60,.45) 0%, transparent 70%);
+            animation: skillGlowPulse .8s ease-in-out 3;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes skillGlowPulse {
+            0%   { opacity: 0.2; transform: scale(0.95); }
+            50%  { opacity: 1;   transform: scale(1.05); }
+            100% { opacity: 0.2; transform: scale(0.95); }
         }
 
         /* ===== 中央比分 ===== */
@@ -769,6 +787,9 @@
     }
     function triggerSkill(name, skill, isA) {
         showCall(isA ? cA1 : cB1, `⚡ ${skill}`, '#00d4ff');
+        const card = isA ? cardA : cardB;
+        card.classList.add('skill-glow');
+        setTimeout(() => card.classList.remove('skill-glow'), 2200);
     }
 
     // ====== 技能系统 ======
