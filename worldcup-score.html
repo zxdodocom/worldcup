@@ -983,8 +983,8 @@
                 numB.textContent = curB;
 
                 // --- 暴击判定（敏捷影响）---
-                const critRateA = 0.005 + (effAgiA / 100) * 0.045;
-                const critRateB = 0.005 + (effAgiB / 100) * 0.045;
+                const critRateA = 0.002 + (effAgiA / 100) * 0.028;
+                const critRateB = 0.002 + (effAgiB / 100) * 0.028;
                 if (curA < 5 && Math.random() < critRateA) {
                     const add = Math.min(2, 5 - curA);
                     curA += add; triggerCrit(scoreA);
