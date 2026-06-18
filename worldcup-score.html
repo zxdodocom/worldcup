@@ -708,11 +708,11 @@
     }
 
     // 进球概率：越强（排名数字越小）越容易进球
-    // 公式：对手排名 / (自己排名 + 对手排名)，上限 40%，下限 8%
+    // 公式：对手排名 / (自己排名 + 对手排名)，上限 20%，下限 8%
     function goalChance(myRank, oppRank) {
         if (!myRank || !oppRank) return 0.30;
         const strength = oppRank / (myRank + oppRank);
-        return Math.min(Math.max(strength, 0.08), 0.40);
+        return Math.min(Math.max(strength, 0.08), 0.20);
     }
 
     // 进球特效：比分闪光 + 全屏 GOAL 庆祝
@@ -836,8 +836,8 @@
         halfTimeBox.classList.remove('show');
         fullTimeBox.classList.remove('show');
 
-        // 每 15 分钟（15'/30'/45'/60'/75'/90'）各 ROLL 一次
-        const GOAL_MINS = new Set([15, 30, 45, 60, 75, 90]);
+        // 每 10 分钟（10'/20'/30'/40'/50'/60'/70'/80'/90'）各 ROLL 一次
+        const GOAL_MINS = new Set([10, 20, 30, 40, 50, 60, 70, 80, 90]);
 
         const TOTAL_MS = 10000;
         const TOTAL_MIN = 90;
