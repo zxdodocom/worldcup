@@ -883,6 +883,9 @@
         goalOverlay.classList.remove('show');
         goalBanner.classList.remove('show');
         critBanner.classList.remove('show');
+        // 清空上半场/全场文字，防止缓存残留
+        htA.textContent = '0'; htB.textContent = '0';
+        ftA.textContent = '0'; ftB.textContent = '0';
 
         // 每 10 分钟（10'/20'/30'/40'/50'/60'/70'/80'/90'）各 ROLL 一次
         const GOAL_MINS = new Set([10, 20, 30, 40, 50, 60, 70, 80, 90]);
@@ -959,17 +962,17 @@
     function updateResultMessage() {
         const a = inputA.value.trim() || '主队';
         const b = inputB.value.trim() || '客队';
-        if (numA.textContent === '0' && numB.textContent === '0') {
-            clockDisplay.textContent = "0'";
-            halfTimeBox.classList.remove('show');
-            fullTimeBox.classList.remove('show');
-            htA.textContent = '0';
-            htB.textContent = '0';
-            ftA.textContent = '0';
-            ftB.textContent = '0';
-            result.textContent = `⚽ 输入球队名称，点击按钮开始比赛！`;
-            result.classList.add('show');
-        }
+        clockDisplay.textContent = "0'";
+        halfTimeBox.classList.remove('show');
+        fullTimeBox.classList.remove('show');
+        goalOverlay.classList.remove('show');
+        goalBanner.classList.remove('show');
+        critBanner.classList.remove('show');
+        htA.textContent = '0'; htB.textContent = '0';
+        ftA.textContent = '0'; ftB.textContent = '0';
+        numA.textContent = '0'; numB.textContent = '0';
+        result.textContent = `⚽ 输入球队名称，点击按钮开始比赛！`;
+        result.classList.add('show');
     }
 
     // ===================================================================
