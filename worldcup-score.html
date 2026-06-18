@@ -854,23 +854,21 @@
                 numA.textContent = curA;
                 numB.textContent = curB;
 
-                // 第 90 分钟 — 奇迹事件：1% 再进一球，0.01% 进两球
-                if (m === 90) {
-                    const miracleA = Math.random();
-                    if (miracleA < 0.0001) {
-                        curA += 2; triggerGoalFlash(scoreA); triggerGoalFlash(scoreA);
-                    } else if (miracleA < 0.01) {
-                        curA++; triggerGoalFlash(scoreA);
-                    }
-                    const miracleB = Math.random();
-                    if (miracleB < 0.0001) {
-                        curB += 2; triggerGoalFlash(scoreB); triggerGoalFlash(scoreB);
-                    } else if (miracleB < 0.01) {
-                        curB++; triggerGoalFlash(scoreB);
-                    }
-                    numA.textContent = curA;
-                    numB.textContent = curB;
+                // 每次 ROLL 都附加奇迹事件：1% 再进一球，0.01% 进两球
+                const miracleA = Math.random();
+                if (miracleA < 0.0001) {
+                    curA += 2; triggerGoalFlash(scoreA); triggerGoalFlash(scoreA);
+                } else if (miracleA < 0.01) {
+                    curA++; triggerGoalFlash(scoreA);
                 }
+                const miracleB = Math.random();
+                if (miracleB < 0.0001) {
+                    curB += 2; triggerGoalFlash(scoreB); triggerGoalFlash(scoreB);
+                } else if (miracleB < 0.01) {
+                    curB++; triggerGoalFlash(scoreB);
+                }
+                numA.textContent = curA;
+                numB.textContent = curB;
             }
 
             // 第 45 分钟 — 中场上半场结束，记录半场比分
