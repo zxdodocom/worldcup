@@ -162,23 +162,22 @@
             color: rgba(255,255,240,.25);
             font-weight: 400;
         }
-        .team-card .skill-call {
+        .team-card .call-line {
             font-size: 11px;
             font-weight: 700;
-            color: #00d4ff;
             text-align: center;
-            min-height: 18px;
-            line-height: 18px;
+            min-height: 16px;
+            line-height: 16px;
             letter-spacing: 1px;
-            text-shadow: 0 0 12px rgba(0,212,255,.4);
+            text-shadow: 0 0 10px currentColor;
             opacity: 0;
-            transition: opacity .3s;
+            transition: opacity .25s;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
         }
-        .team-card .skill-call.show {
+        .team-card .call-line.show {
             opacity: 1;
         }
 
@@ -371,7 +370,7 @@
             .team-card { padding: 12px 8px 14px; gap: 7px; }
             .team-card .flag { width: 50px; height: 38px; }
             .team-card .team-name { font-size: 13px; }
-            .team-card .skill-call { font-size: 9px; min-height: 15px; line-height: 15px; }
+            .team-card .call-line { font-size: 9px; min-height: 13px; line-height: 13px; }
             .score-box { width: 52px; height: 52px; font-size: 26px; border-radius: 12px; }
             .score-colon { font-size: 24px; }
             .match-clock { font-size: 20px; }
@@ -437,7 +436,9 @@
             <div class="team-name" id="nameA">
                 <span class="gray">主队</span>
             </div>
-            <div class="skill-call" id="skillCallA"></div>
+            <div class="call-line" id="callA1"></div>
+            <div class="call-line" id="callA2"></div>
+            <div class="call-line" id="callA3"></div>
         </div>
 
         <!-- 比分 -->
@@ -473,7 +474,9 @@
             <div class="team-name" id="nameB">
                 <span class="gray">客队</span>
             </div>
-            <div class="skill-call" id="skillCallB"></div>
+            <div class="call-line" id="callB1"></div>
+            <div class="call-line" id="callB2"></div>
+            <div class="call-line" id="callB3"></div>
         </div>
     </div>
 
@@ -680,32 +683,31 @@
         return Math.min(Math.max(prob, 0.10), 0.35);
     }
 
-    // 进球特效：比分闪光 + 国旗下方 GOAL 提示
-    function triggerGoalFlash(el, callEl) {
+    // 进球特效：比分闪光 + 第2行 GOAL 提示
+    function triggerGoalFlash(el) {
         el.classList.add('goal');
         setTimeout(() => el.classList.remove('goal'), 750);
-        callEl.textContent = '⚽ GOAL!';
-        callEl.style.color = '#f7e05e';
-        callEl.classList.add('show');
-        setTimeout(() => callEl.classList.remove('show'), 1500);
+        showCall(el.id === 'scoreA' ? cA2 : cB2, '⚽ GOAL!', '#f7e05e');
     }
 
-    // 暴击特效：比分闪光 + 国旗下方 暴击 提示
-    function triggerCrit(el, callEl) {
+    // 暴击特效：比分闪光 + 第3行 暴击 提示
+    function triggerCrit(el) {
         el.classList.add('goal');
         setTimeout(() => el.classList.remove('goal'), 750);
-        callEl.textContent = '💥 暴击！';
-        callEl.style.color = '#ff4444';
-        callEl.classList.add('show');
-        setTimeout(() => callEl.classList.remove('show'), 1500);
+        showCall(el.id === 'scoreA' ? cA3 : cB3, '💥 暴击！', '#ff4444');
     }
 
-    // 技能发动提示：国旗下方技能名
-    function triggerSkill(teamName, skillName, callEl) {
-        callEl.textContent = `⚡ ${skillName}`;
-        callEl.style.color = '#00d4ff';
-        callEl.classList.add('show');
-        setTimeout(() => callEl.classList.remove('show'), 1500);
+    // 技能发动提示：第1行技能名
+    function triggerSkill(name, skill, isA) {
+        showCall(isA ? cA1 : cB1, `⚡ ${skill}`, '#00d4ff');
+    }
+
+    // 通用行显示
+    function showCall(el, text, color) {
+        el.textContent = text;
+        el.style.color = color;
+        el.classList.add('show');
+        setTimeout(() => el.classList.remove('show'), 1800);
     }
 
     // ====== 技能系统 ======
@@ -825,6 +827,13 @@
     const ftB = document.getElementById('ftB');
     const skillCallA  = document.getElementById('skillCallA');
     const skillCallB  = document.getElementById('skillCallB');
+    // 三行通知：1=技能, 2=进球, 3=暴击
+    const cA1 = document.getElementById('callA1');
+    const cA2 = document.getElementById('callA2');
+    const cA3 = document.getElementById('callA3');
+    const cB1 = document.getElementById('callB1');
+    const cB2 = document.getElementById('callB2');
+    const cB3 = document.getElementById('callB3');
     const btnRoll  = document.getElementById('btnRoll');
     const result   = document.getElementById('resultText');
 
@@ -904,8 +913,8 @@
         numB.textContent = '0';
         halfTimeBox.classList.remove('show');
         fullTimeBox.classList.remove('show');
-        skillCallA.classList.remove('show'); skillCallA.textContent = '';
-        skillCallB.classList.remove('show'); skillCallB.textContent = '';
+        // 三行通知清零
+        [cA1,cA2,cA3,cB1,cB2,cB3].forEach(el => { el.classList.remove('show'); el.textContent = ''; });
         // 清空上半场/全场文字，防止缓存残留
         htA.textContent = '0'; htB.textContent = '0';
         ftA.textContent = '0'; ftB.textContent = '0';
@@ -930,13 +939,13 @@
                 if (sdA && Math.random() < 0.10) {
                     atkBoostA = sdA[1]; defBoostA = sdA[2]; agiBoostA = sdA[3];
                     skillNameA = sdA[0];
-                    triggerSkill(teamNameA, skillNameA, skillCallA);
+                    triggerSkill(teamNameA, skillNameA, true);
                 }
                 const sdB = getSkillData(teamNameB);
                 if (sdB && Math.random() < 0.10) {
                     atkBoostB = sdB[1]; defBoostB = sdB[2]; agiBoostB = sdB[3];
                     skillNameB = sdB[0];
-                    triggerSkill(teamNameB, skillNameB, skillCallB);
+                    triggerSkill(teamNameB, skillNameB, false);
                 }
 
                 // --- 计算有效攻击/防御/敏捷（含技能加成）---
@@ -952,8 +961,8 @@
                 // --- 进球 ROLL ---
                 const goalA = Math.random() < goalChance(effAtkA, effDefB);
                 const goalB = Math.random() < goalChance(effAtkB, effDefA);
-                if (goalA) { curA++; triggerGoalFlash(scoreA, skillCallA); }
-                if (goalB) { curB++; triggerGoalFlash(scoreB, skillCallB); }
+                if (goalA) { curA++; triggerGoalFlash(scoreA); }
+                if (goalB) { curB++; triggerGoalFlash(scoreB); }
                 numA.textContent = curA;
                 numB.textContent = curB;
 
@@ -961,10 +970,10 @@
                 const critRateA = 0.005 + (effAgiA / 100) * 0.045;
                 const critRateB = 0.005 + (effAgiB / 100) * 0.045;
                 if (Math.random() < critRateA) {
-                    curA += 2; triggerCrit(scoreA, skillCallA);
+                    curA += 2; triggerCrit(scoreA);
                 }
                 if (Math.random() < critRateB) {
-                    curB += 2; triggerCrit(scoreB, skillCallB);
+                    curB += 2; triggerCrit(scoreB);
                 }
                 numA.textContent = curA;
                 numB.textContent = curB;
