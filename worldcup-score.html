@@ -683,31 +683,59 @@
         return Math.min(Math.max(prob, 0.10), 0.35);
     }
 
-    // 进球特效：比分闪光 + 第2行 GOAL 提示
-    function triggerGoalFlash(el) {
-        el.classList.add('goal');
-        setTimeout(() => el.classList.remove('goal'), 750);
-        showCall(el.id === 'scoreA' ? cA2 : cB2, '⚽ GOAL!', '#f7e05e');
-    }
+    // ===================================================================
+    //  DOM refs
+    // ===================================================================
+    const inputA   = document.getElementById('teamA');
+    const inputB   = document.getElementById('teamB');
+    const flagA    = document.getElementById('flagA');
+    const flagB    = document.getElementById('flagB');
+    const nameA    = document.getElementById('nameA');
+    const nameB    = document.getElementById('nameB');
+    const cardA    = document.getElementById('cardA');
+    const cardB    = document.getElementById('cardB');
+    const numA     = document.getElementById('numA');
+    const numB     = document.getElementById('numB');
+    const scoreA   = document.getElementById('scoreA');
+    const scoreB   = document.getElementById('scoreB');
+    const clockDisplay = document.getElementById('clockDisplay');
+    const clockWrap    = document.getElementById('clockWrap');
+    const halfTimeBox  = document.getElementById('halfTimeBox');
+    const htA = document.getElementById('htA');
+    const htB = document.getElementById('htB');
+    const fullTimeBox = document.getElementById('fullTimeBox');
+    const ftA = document.getElementById('ftA');
+    const ftB = document.getElementById('ftB');
+    const cA1 = document.getElementById('callA1');
+    const cA2 = document.getElementById('callA2');
+    const cA3 = document.getElementById('callA3');
+    const cB1 = document.getElementById('callB1');
+    const cB2 = document.getElementById('callB2');
+    const cB3 = document.getElementById('callB3');
+    const btnRoll  = document.getElementById('btnRoll');
+    const result   = document.getElementById('resultText');
 
-    // 暴击特效：比分闪光 + 第3行 暴击 提示
-    function triggerCrit(el) {
-        el.classList.add('goal');
-        setTimeout(() => el.classList.remove('goal'), 750);
-        showCall(el.id === 'scoreA' ? cA3 : cB3, '💥 暴击！', '#ff4444');
-    }
+    let rolling = false;
 
-    // 技能发动提示：第1行技能名
-    function triggerSkill(name, skill, isA) {
-        showCall(isA ? cA1 : cB1, `⚡ ${skill}`, '#00d4ff');
-    }
-
-    // 通用行显示
+    // ====== 通知行显示（DOM 已就绪）======
     function showCall(el, text, color) {
         el.textContent = text;
         el.style.color = color;
         el.classList.add('show');
         setTimeout(() => el.classList.remove('show'), 1800);
+    }
+    function triggerGoalFlash(el) {
+        el.classList.add('goal');
+        setTimeout(() => el.classList.remove('goal'), 750);
+        showCall(el.id === 'scoreA' ? cA2 : cB2, '⚽ GOAL!', '#f7e05e');
+    }
+    function triggerCrit(el) {
+        el.classList.add('goal');
+        setTimeout(() => el.classList.remove('goal'), 750);
+        showCall(el.id === 'scoreA' ? cA3 : cB3, '💥 暴击！', '#ff4444');
+    }
+    function triggerSkill(name, skill, isA) {
+        showCall(isA ? cA1 : cB1, `⚡ ${skill}`, '#00d4ff');
     }
 
     // ====== 技能系统 ======
@@ -803,43 +831,6 @@
     }
 
     // ===================================================================
-    //  DOM refs
-    // ===================================================================
-    const inputA   = document.getElementById('teamA');
-    const inputB   = document.getElementById('teamB');
-    const flagA    = document.getElementById('flagA');
-    const flagB    = document.getElementById('flagB');
-    const nameA    = document.getElementById('nameA');
-    const nameB    = document.getElementById('nameB');
-    const cardA    = document.getElementById('cardA');
-    const cardB    = document.getElementById('cardB');
-    const numA     = document.getElementById('numA');
-    const numB     = document.getElementById('numB');
-    const scoreA   = document.getElementById('scoreA');
-    const scoreB   = document.getElementById('scoreB');
-    const clockDisplay = document.getElementById('clockDisplay');
-    const clockWrap    = document.getElementById('clockWrap');
-    const halfTimeBox  = document.getElementById('halfTimeBox');
-    const htA = document.getElementById('htA');
-    const htB = document.getElementById('htB');
-    const fullTimeBox = document.getElementById('fullTimeBox');
-    const ftA = document.getElementById('ftA');
-    const ftB = document.getElementById('ftB');
-    const skillCallA  = document.getElementById('skillCallA');
-    const skillCallB  = document.getElementById('skillCallB');
-    // 三行通知：1=技能, 2=进球, 3=暴击
-    const cA1 = document.getElementById('callA1');
-    const cA2 = document.getElementById('callA2');
-    const cA3 = document.getElementById('callA3');
-    const cB1 = document.getElementById('callB1');
-    const cB2 = document.getElementById('callB2');
-    const cB3 = document.getElementById('callB3');
-    const btnRoll  = document.getElementById('btnRoll');
-    const result   = document.getElementById('resultText');
-
-    let rolling = false;
-
-    // ===================================================================
     //  国旗渲染
     // ===================================================================
     function getFlagCode(name) {
@@ -930,6 +921,7 @@
             clockDisplay.textContent = m + "'";
 
             if (GOAL_MINS.has(m)) {
+                try {
                 // --- 技能判定（10%概率发动）---
                 let atkBoostA = 0, defBoostA = 0, agiBoostA = 0;
                 let atkBoostB = 0, defBoostB = 0, agiBoostB = 0;
@@ -977,6 +969,7 @@
                 }
                 numA.textContent = curA;
                 numB.textContent = curB;
+                } catch(e) { console.error('ROLL error:', e.message, e.stack); }
             }
 
             // 第 45 分钟 — 中场上半场结束，记录半场比分
