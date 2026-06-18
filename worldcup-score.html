@@ -550,87 +550,87 @@
     //  国旗 ISO 映射  (常用 FIFA 参赛国)
     // ===================================================================
     const COUNTRY_MAP = {
-        '巴西':'br', '阿根廷':'ar', '乌拉圭':'uy', '巴拉圭':'py', '智利':'cl',
-        '哥伦比亚':'co', '厄瓜多尔':'ec', '秘鲁':'pe', '委内瑞拉':'ve', '玻利维亚':'bo',
-        '墨西哥':'mx', '美国':'us', '加拿大':'ca', '哥斯达黎加':'cr', '巴拿马':'pa',
-        '洪都拉斯':'hn', '萨尔瓦多':'sv', '牙买加':'jm', '特立尼达和多巴哥':'tt',
-        '海地':'ht', '古巴':'cu', '危地马拉':'gt',
-        '西班牙':'es', '法国':'fr', '德国':'de', '意大利':'it', '英格兰':'gb-eng',
+        '巴西':'br', '阿根廷':'ar', '乌拉圭':'uy', '巴拉圭':'py', 
+        '哥伦比亚':'co', '厄瓜多尔':'ec',   
+        '墨西哥':'mx', '美国':'us', '加拿大':'ca',  '巴拿马':'pa',
+           
+        '海地':'ht',  
+        '西班牙':'es', '法国':'fr', '德国':'de',  '英格兰':'gb-eng',
         '荷兰':'nl', '葡萄牙':'pt', '比利时':'be', '克罗地亚':'hr', '瑞士':'ch',
-        '丹麦':'dk', '瑞典':'se', '波兰':'pl', '奥地利':'at', '乌克兰':'ua',
-        '塞尔维亚':'rs', '土耳其':'tr', '捷克':'cz', '俄罗斯':'ru', '威尔士':'gb-wls',
-        '苏格兰':'gb-sct', '北爱尔兰':'gb-nir', '罗马尼亚':'ro', '希腊':'gr',
-        '匈牙利':'hu', '挪威':'no', '斯洛伐克':'sk', '斯洛文尼亚':'si',
-        '保加利亚':'bg', '芬兰':'fi', '爱尔兰':'ie', '冰岛':'is',
+         '瑞典':'se',  '奥地利':'at', 
+         '土耳其':'tr', '捷克':'cz',  
+        '苏格兰':'gb-sct',   
+         '挪威':'no',  
+           
         '日本':'jp', '韩国':'kr', '澳大利亚':'au', '伊朗':'ir', '沙特阿拉伯':'sa',
-        '卡塔尔':'qa', '阿联酋':'ae', '伊拉克':'iq', '约旦':'jo', '乌兹别克斯坦':'uz',
-        '中国':'cn', '朝鲜':'kp', '泰国':'th', '越南':'vn', '印度尼西亚':'id',
-        '马来西亚':'my', '菲律宾':'ph', '新加坡':'sg',
-        '尼日利亚':'ng', '喀麦隆':'cm', '加纳':'gh', '塞内加尔':'sn', '科特迪瓦':'ci',
+        '卡塔尔':'qa',  '伊拉克':'iq', '约旦':'jo', '乌兹别克斯坦':'uz',
+            
+          
+          '加纳':'gh', '塞内加尔':'sn', '科特迪瓦':'ci',
         '摩洛哥':'ma', '埃及':'eg', '阿尔及利亚':'dz', '突尼斯':'tn', '南非':'za',
-        '马里':'ml', '布基纳法索':'bf', '几内亚':'gn', '刚果民主共和国':'cd',
-        '赞比亚':'zm', '安哥拉':'ao', '佛得角':'cv', '马达加斯加':'mg',
-        '莫桑比克':'mz', '纳米比亚':'na', '肯尼亚':'ke', '埃塞俄比亚':'et',
-        '塞拉利昂':'sl', '苏丹':'sd', '坦桑尼亚':'tz', '科摩罗':'km',
-        '赤道几内亚':'gq', '加蓬':'ga', '毛里塔尼亚':'mr', '多哥':'tg', '乌干达':'ug',
-        '新西兰':'nz', '所罗门群岛':'sb', '斐济':'fj', '瓦努阿图':'vu',
-        '新喀里多尼亚':'nc', '塔希提':'pf',
+           '刚果民主共和国':'cd',
+          '佛得角':'cv', 
+           
+           
+            
+        '新西兰':'nz',   
+         
         '英格兰':'gb-eng',
         // 英文名辅助
-        'brazil':'br','argentina':'ar','uruguay':'uy','paraguay':'py','chile':'cl',
-        'colombia':'co','ecuador':'ec','peru':'pe','venezuela':'ve','bolivia':'bo',
-        'mexico':'mx','united states':'us','usa':'us','canada':'ca','costa rica':'cr',
-        'panama':'pa','honduras':'hn','el salvador':'sv','jamaica':'jm',
-        'spain':'es','france':'fr','germany':'de','italy':'it','netherlands':'nl',
+        'brazil':'br','argentina':'ar','uruguay':'uy','paraguay':'py',
+        'colombia':'co','ecuador':'ec',
+        'mexico':'mx','united states':'us','usa':'us','canada':'ca',
+        'panama':'pa',
+        'spain':'es','france':'fr','germany':'de','netherlands':'nl',
         'portugal':'pt','belgium':'be','croatia':'hr','switzerland':'ch',
-        'denmark':'dk','sweden':'se','poland':'pl','austria':'at','ukraine':'ua',
-        'serbia':'rs','turkey':'tr','czech':'cz','russia':'ru',
+        'sweden':'se','austria':'at',
+        'turkey':'tr','czech':'cz',
         'japan':'jp','korea':'kr','south korea':'kr','australia':'au','iran':'ir',
-        'saudi arabia':'sa','qatar':'qa','china':'cn','thailand':'th',
-        'nigeria':'ng','cameroon':'cm','ghana':'gh','senegal':'sn',
-        'morocco':'ma','egypt':'eg','algeria':'dz','tunisia':'tn','south africa':'za',
+        'saudi arabia':'sa','qatar':'qa',
+        'ghana':'gh','senegal':'sn',
+        'egypt':'eg','algeria':'dz','tunisia':'tn','south africa':'za',
         'new zealand':'nz',
         // 补充更多参赛国
-        '波黑':'ba','北马其顿':'mk','阿尔巴尼亚':'al','黑山':'me',
-        '格鲁吉亚':'ge','以色列':'il','巴林':'bh','阿曼':'om',
-        '科威特':'kw','叙利亚':'sy','黎巴嫩':'lb','巴勒斯坦':'ps',
-        '印度':'in','吉尔吉斯斯坦':'kg','塔吉克斯坦':'tj','土库曼斯坦':'tm',
-        '马尔代夫':'mv','尼泊尔':'np','孟加拉国':'bd','不丹':'bt',
-        '印度尼西亚':'id','蒙古':'mn','斯里兰卡':'lk','阿富汗':'af','也门':'ye',
-        '马拉维':'mw','布隆迪':'bi','卢旺达':'rw','索马里':'so','南苏丹':'ss',
-        '利比里亚':'lr','贝宁':'bj','尼日尔':'ne','塞舌尔':'sc','毛里求斯':'mu',
-        '津巴布韦':'zw','博茨瓦纳':'bw','斯威士兰':'sz','莱索托':'ls',
-        '刚果共和国':'cg','东帝汶':'tl','澳门':'mo','中华台北':'tw',
-        '香港':'hk','关岛':'gu','萨摩亚':'ws','汤加':'to','巴布亚新几内亚':'pg',
-        '多米尼加共和国':'do','波多黎各':'pr','圣基茨和尼维斯':'kn',
-        '安提瓜和巴布达':'ag','多米尼克':'dm','圣卢西亚':'lc',
-        '圣文森特和格林纳丁斯':'vc','格林纳达':'gd','巴巴多斯':'bb',
-        '巴哈马':'bs','伯利兹':'bz','尼加拉瓜':'ni','圣马力诺':'sm',
-        '列支敦士登':'li','安道尔':'ad','马耳他':'mt','卢森堡':'lu',
-        '摩尔多瓦':'md','亚美尼亚':'am','阿塞拜疆':'az','白俄罗斯':'by',
-        '爱沙尼亚':'ee','拉脱维亚':'lv','立陶宛':'lt','塞浦路斯':'cy',
-        '哈萨克斯坦':'kz','法罗群岛':'fo','直布罗陀':'gi','科索沃':'xk',
-        '开曼群岛':'ky','阿鲁巴':'aw','库拉索':'cw','百慕大':'bm',
+        '波黑':'ba',
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        '库拉索':'cw',
         // 英文补充
         'england':'gb-eng','wales':'gb-wls','scotland':'gb-sct',
-        'northern ireland':'gb-nir','bosnia':'ba','albania':'al',
-        'montenegro':'me','georgia':'ge','israel':'il','bahrain':'bh',
-        'india':'in','kyrgyzstan':'kg','tajikistan':'tj','oman':'om',
-        'kuwait':'kw','syria':'sy','lebanon':'lb','palestine':'ps',
-        'zimbabwe':'zw','botswana':'bw','namibia':'na','malawi':'mw',
-        'burundi':'bi','rwanda':'rw','south sudan':'ss','liberia':'lr',
-        'benin':'bj','niger':'ne','congo':'cg','seychelles':'sc',
-        'mauritius':'mu','eswatini':'sz','lesotho':'ls','dominican republic':'do',
-        'armenia':'am','azerbaijan':'az','belarus':'by','estonia':'ee',
-        'latvia':'lv','lithuania':'lt','cyprus':'cy','kazakhstan':'kz',
-        'kosovo':'xk','liechtenstein':'li','san marino':'sm','andorra':'ad',
-        'malta':'mt','luxembourg':'lu','moldova':'md','faroe islands':'fo',
-        'gibraltar':'gi','montenegro':'me','north macedonia':'mk',
-        'cayman islands':'ky','aruba':'aw','curacao':'cw','bermuda':'bm',
-        'papua new guinea':'pg','samoa':'ws','tonga':'to',
-        'antigua and barbuda':'ag','barbados':'bb','bahamas':'bs',
-        'belize':'bz','dominica':'dm','grenada':'gd','st lucia':'lc',
-        'st kitts and nevis':'kn',
+        'northern ireland':'gb-nir','bosnia':'ba',
+        
+        
+        
+        
+        
+        'congo':'cg',
+        
+        
+        
+        
+        
+        'north macedonia':'mk',
+        'curacao':'cw',
+        
+        
+        
+        
     };
 
     // ===================================================================
@@ -638,85 +638,85 @@
     // ===================================================================
     const FIFA_RANKINGS = {
         '阿根廷':1,'法国':2,'西班牙':3,'英格兰':4,'巴西':5,
-        '比利时':6,'荷兰':7,'葡萄牙':8,'哥伦比亚':9,'意大利':10,
+        '比利时':6,'荷兰':7,'葡萄牙':8,'哥伦比亚':9,
         '乌拉圭':11,'克罗地亚':12,'摩洛哥':13,'日本':15,'美国':16,
         '塞内加尔':17,'伊朗':18,'墨西哥':19,'瑞士':20,
-        '德国':21,'丹麦':22,'乌克兰':23,'厄瓜多尔':24,
-        '韩国':25,'奥地利':26,'匈牙利':27,'澳大利亚':28,
-        '瑞典':29,'土耳其':30,'威尔士':31,'波兰':32,
-        '埃及':33,'秘鲁':34,'加拿大':35,'挪威':36,
-        '加纳':37,'喀麦隆':38,'哥斯达黎加':39,'塞尔维亚':40,
-        '捷克':41,'苏格兰':42,'巴拉圭':43,'智利':44,
-        '尼日利亚':45,'刚果民主共和国':46,'阿尔及利亚':47,'斯洛文尼亚':48,
-        '爱尔兰':49,'罗马尼亚':50,'俄罗斯':51,'沙特阿拉伯':52,
-        '玻利维亚':53,'委内瑞拉':54,'南非':55,'突尼斯':56,
-        '希腊':57,'科特迪瓦':58,'布基纳法索':59,'马里':60,
-        '赞比亚':61,'佛得角':62,'冰岛':63,'芬兰':64,
-        '牙买加':65,'特立尼达和多巴哥':66,'海地':67,'巴拿马':68,
-        '洪都拉斯':69,'萨尔瓦多':70,'危地马拉':71,'古巴':72,
-        '乌兹别克斯坦':73,'伊拉克':74,'阿联酋':75,'卡塔尔':76,
-        '约旦':77,'巴林':78,'中国':79,'泰国':80,
-        '越南':81,'朝鲜':82,'印度尼西亚':83,'马来西亚':84,
-        '菲律宾':85,'新加坡':86,'缅甸':87,'柬埔寨':88,
-        '老挝':89,'东帝汶':90,'文莱':91,
-        '安哥拉':92,'几内亚':93,'赤道几内亚':94,'加蓬':95,
-        '毛里塔尼亚':96,'纳米比亚':97,'马达加斯加':98,'莫桑比克':99,
-        '肯尼亚':100,'埃塞俄比亚':101,'塞拉利昂':102,'苏丹':103,
-        '坦桑尼亚':104,'科摩罗':105,'乌干达':106,'多哥':107,
-        '新西兰':108,'所罗门群岛':109,'斐济':110,'瓦努阿图':111,
-        '新喀里多尼亚':112,'塔希提':113,
-        '波黑':114,'阿尔巴尼亚':115,'北马其顿':116,'黑山':117,
-        '格鲁吉亚':118,'以色列':119,'白俄罗斯':120,'哈萨克斯坦':121,
-        '阿塞拜疆':122,'亚美尼亚':123,'科索沃':124,'塞浦路斯':125,
-        '卢森堡':126,'马耳他':127,'摩尔多瓦':128,'爱沙尼亚':129,
-        '拉脱维亚':130,'立陶宛':131,'法罗群岛':132,'直布罗陀':133,
-        '圣马力诺':134,'列支敦士登':135,'安道尔':136,
-        '阿曼':137,'巴林':138,'叙利亚':139,'黎巴嫩':140,'巴勒斯坦':141,
-        '科威特':142,'也门':143,'阿富汗':144,'印度':145,
-        '吉尔吉斯斯坦':146,'塔吉克斯坦':147,'土库曼斯坦':148,
-        '孟加拉国':149,'马尔代夫':150,'尼泊尔':151,'不丹':152,
-        '斯里兰卡':153,'蒙古':154,'东帝汶':155,'澳门':156,'中华台北':157,
-        '香港':158,'关岛':159,'马拉维':160,'南苏丹':161,'布隆迪':162,
-        '卢旺达':163,'索马里':164,'利比里亚':165,'贝宁':166,
-        '尼日尔':167,'塞舌尔':168,'毛里求斯':169,'津巴布韦':170,
-        '博茨瓦纳':171,'斯威士兰':172,'莱索托':173,'刚果共和国':174,
-        '多米尼加共和国':175,'波多黎各':176,'圣基茨和尼维斯':177,
-        '安提瓜和巴布达':178,'多米尼克':179,'圣卢西亚':180,
-        '圣文森特和格林纳丁斯':181,'格林纳达':182,'巴巴多斯':183,
-        '巴哈马':184,'伯利兹':185,'尼加拉瓜':186,'开曼群岛':187,
-        '阿鲁巴':188,'库拉索':189,'百慕大':190,'巴布亚新几内亚':191,
-        '萨摩亚':192,'汤加':193,
+        '德国':21,'厄瓜多尔':24,
+        '韩国':25,'奥地利':26,'澳大利亚':28,
+        '瑞典':29,'土耳其':30,
+        '埃及':33,'加拿大':35,'挪威':36,
+        '加纳':37,
+        '捷克':41,'苏格兰':42,'巴拉圭':43,
+        '刚果民主共和国':46,'阿尔及利亚':47,
+        '沙特阿拉伯':52,
+        '南非':55,'突尼斯':56,
+        '科特迪瓦':58,
+        '佛得角':62,
+        '海地':67,'巴拿马':68,
+        
+        '乌兹别克斯坦':73,'伊拉克':74,'卡塔尔':76,
+        '约旦':77,
+        
+        
+        
+        
+        
+        
+        
+        '新西兰':108,
+        
+        '波黑':114,
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        '库拉索':189,
+        
         // 英文
         'argentina':1,'france':2,'spain':3,'england':4,'brazil':5,
-        'belgium':6,'netherlands':7,'portugal':8,'colombia':9,'italy':10,
-        'uruguay':11,'croatia':12,'morocco':13,'japan':15,'usa':16,
+        'belgium':6,'netherlands':7,'portugal':8,'colombia':9,
+        'uruguay':11,'croatia':12,'japan':15,'usa':16,
         'united states':16,'senegal':17,'iran':18,'mexico':19,'switzerland':20,
-        'germany':21,'denmark':22,'ukraine':23,'ecuador':24,
-        'south korea':25,'korea':25,'austria':26,'hungary':27,'australia':28,
-        'sweden':29,'turkey':30,'wales':31,'poland':32,
-        'china':79,'thailand':80,'vietnam':81,'new zealand':108,
-        'bosnia':114,'albania':115,'north macedonia':116,'montenegro':117,
-        'georgia':118,'israel':119,'belarus':120,'kazakhstan':121,
-        'azerbaijan':122,'armenia':123,'kosovo':124,'cyprus':125,
-        'luxembourg':126,'malta':127,'moldova':128,'estonia':129,
-        'latvia':130,'lithuania':131,'faroe islands':132,'gibraltar':133,
-        'san marino':134,'liechtenstein':135,'andorra':136,
-        'oman':137,'bahrain':138,'syria':139,'lebanon':140,'palestine':141,
-        'kuwait':142,'yemen':143,'afghanistan':144,'india':145,
-        'kyrgyzstan':146,'tajikistan':147,'turkmenistan':148,
-        'bangladesh':149,'maldives':150,'nepal':151,'bhutan':152,
-        'sri lanka':153,'mongolia':154,'timor-leste':155,'macau':156,
-        'chinese taipei':157,'hong kong':158,'guam':159,
-        'malawi':160,'south sudan':161,'burundi':162,'rwanda':163,
-        'somalia':164,'liberia':165,'benin':166,'niger':167,
-        'seychelles':168,'mauritius':169,'zimbabwe':170,'botswana':171,
-        'eswatini':172,'lesotho':173,'congo':174,
-        'dominican republic':175,'puerto rico':176,'st kitts and nevis':177,
-        'antigua and barbuda':178,'dominica':179,'st lucia':180,
-        'st vincent':181,'grenada':182,'barbados':183,'bahamas':184,
-        'belize':185,'nicaragua':186,'cayman islands':187,'aruba':188,
-        'curacao':189,'bermuda':190,'papua new guinea':191,
-        'samoa':192,'tonga':193,
+        'germany':21,'ecuador':24,
+        'south korea':25,'korea':25,'austria':26,'australia':28,
+        'sweden':29,'turkey':30,'wales':31,
+        'new zealand':108,
+        'bosnia':114,'north macedonia':116,
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        'congo':174,
+        
+        
+        
+        
+        'curacao':189,
+        
     };
 
     function getRanking(name) {
@@ -947,10 +947,24 @@
 
         const teamNameA = inputA.value.trim() || '';
         const teamNameB = inputB.value.trim() || '';
-        const statsA = getTeamStats(teamNameA) || [75,75,75];
-        const statsB = getTeamStats(teamNameB) || [75,75,75];
+        const rawStatsA = getTeamStats(teamNameA);
+        const rawStatsB = getTeamStats(teamNameB);
+        const statsA = rawStatsA || [75,75,75];
+        const statsB = rawStatsB || [75,75,75];
         const rankA = getRanking(teamNameA);
         const rankB = getRanking(teamNameB);
+
+        // --- 检查是否48支参赛队 ---
+        if (!rawStatsA) {
+            rolling = false; btnRoll.disabled = false;
+            btnRoll.innerHTML = '<span class="btn-text">⚽ 比赛开始！！</span>';
+            alert('⚠️ ' + (teamNameA || '?') + ' 在家玩泥巴！'); return;
+        }
+        if (!rawStatsB) {
+            rolling = false; btnRoll.disabled = false;
+            btnRoll.innerHTML = '<span class="btn-text">⚽ 比赛开始！！</span>';
+            alert('⚠️ ' + (teamNameB || '?') + ' 在家玩泥巴！'); return;
+        }
 
         // 时钟脉冲
         clockWrap.classList.add('rolling');
