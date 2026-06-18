@@ -899,12 +899,12 @@
                 numA.textContent = curA;
                 numB.textContent = curB;
 
-                // 每次 ROLL 都附加暴击事件：0.5% 概率再进一球
+                // 每次 ROLL 都附加暴击事件：0.5% 概率再进两球
                 if (Math.random() < 0.005) {
-                    curA++; triggerCrit(scoreA);
+                    curA += 2; triggerCrit(scoreA);
                 }
                 if (Math.random() < 0.005) {
-                    curB++; triggerCrit(scoreB);
+                    curB += 2; triggerCrit(scoreB);
                 }
                 numA.textContent = curA;
                 numB.textContent = curB;
