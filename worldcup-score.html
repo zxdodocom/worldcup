@@ -255,120 +255,6 @@
             100% { transform: scale(1);     box-shadow: 0 0 0 rgba(247,224,94,0);   background: transparent; color: #f0eee0; }
         }
 
-        /* 进球全屏庆祝 */
-        .goal-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 99;
-            opacity: 0;
-            transition: opacity .12s;
-        }
-        .goal-overlay.show {
-            opacity: 1;
-        }
-        .goal-overlay .flash {
-            width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(247,224,94,.35) 0%, transparent 65%);
-        }
-        .goal-banner {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: 100;
-            opacity: 0;
-            transition: none;
-        }
-        .goal-banner.show {
-            opacity: 1;
-        }
-        .goal-banner .goal-text {
-            font-size: 80px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, #f7e05e 0%, #ff8c00 50%, #f7e05e 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 30px rgba(247,224,94,.5)) drop-shadow(0 4px 8px rgba(0,0,0,.4));
-            transform: scale(0) rotate(-12deg);
-            animation: goalBannerPop 1s cubic-bezier(.17,.67,.3,1.2) forwards;
-        }
-        .goal-banner .crit-text {
-            font-size: 80px;
-            font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(135deg, #ff4444 0%, #ff8800 50%, #ff4444 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 40px rgba(255,68,68,.6)) drop-shadow(0 4px 8px rgba(0,0,0,.4));
-            transform: scale(0) rotate(-20deg);
-            animation: critBannerPop 1.1s cubic-bezier(.17,.67,.3,1.2) forwards;
-        }
-        @keyframes critBannerPop {
-            0%   { transform: scale(0) rotate(-25deg) translateY(0);    opacity: 0; }
-            30%  { transform: scale(1.6) rotate(8deg)  translateY(-20px); opacity: 1; }
-            50%  { transform: scale(0.85) rotate(-4deg) translateY(0);   opacity: 1; }
-            70%  { transform: scale(1.1) rotate(2deg)  translateY(-5px); opacity: 1; }
-            100% { transform: scale(1) rotate(0deg)   translateY(0);    opacity: 1; }
-        }
-        @keyframes goalBannerPop {
-            0%   { transform: scale(0) rotate(-15deg); opacity: 0; }
-            35%  { transform: scale(1.5) rotate(5deg);  opacity: 1; }
-            55%  { transform: scale(0.88) rotate(-3deg); opacity: 1; }
-            75%  { transform: scale(1.06) rotate(1deg);  opacity: 1; }
-            100% { transform: scale(1) rotate(0deg);   opacity: 1; }
-        }
-
-        /* 技能发动横幅 */
-        .skill-banner {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: 98;
-            opacity: 0;
-            transition: none;
-        }
-        .skill-banner.show {
-            opacity: 1;
-        }
-        .skill-banner .skill-text {
-            font-size: 36px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 50%, #00d4ff 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 25px rgba(0,212,255,.5)) drop-shadow(0 4px 8px rgba(0,0,0,.4));
-            transform: scale(0);
-            animation: skillPop .9s cubic-bezier(.17,.67,.3,1.2) forwards;
-            padding: 12px 32px;
-            border-radius: 16px;
-            background-color: rgba(0,0,0,.3);
-            -webkit-background-clip: padding-box;
-            background-clip: padding-box;
-        }
-        @keyframes skillPop {
-            0%   { transform: scale(0) translateY(-30px); opacity: 0; }
-            40%  { transform: scale(1.2) translateY(0);   opacity: 1; }
-            65%  { transform: scale(0.9);                 opacity: 1; }
-            100% { transform: scale(1);                   opacity: 1; }
-        }
-
         .score-colon {
             font-size: 36px;
             font-weight: 700;
@@ -495,9 +381,6 @@
             .btn-roll { padding: 12px 28px; font-size: 15px; width: 90%; max-width: 300px; }
             .result-text { font-size: 16px; }
             .pitch { gap: 4px; }
-            .goal-banner .goal-text { font-size: 48px; }
-            .goal-banner .crit-text { font-size: 48px; }
-            .skill-banner .skill-text { font-size: 28px; }
         }
         /* 小屏手机：320px ~ 374px */
         @media (max-width: 414px) {
@@ -518,9 +401,6 @@
             .btn-roll { padding: 10px 20px; font-size: 13px; width: 95%; }
             .result-text { font-size: 14px; }
             .pitch { gap: 2px; }
-            .goal-banner .goal-text { font-size: 36px; }
-            .goal-banner .crit-text { font-size: 36px; }
-            .skill-banner .skill-text { font-size: 22px; }
         }
         /* 防止横屏手机/平板太宽时锁死 */
         @media (min-width: 601px) and (max-width: 900px) {
@@ -610,11 +490,6 @@
     </div>
 
 </div>
-
-<div class="goal-overlay" id="goalOverlay"><div class="flash"></div></div>
-<div class="goal-banner" id="goalBanner"><span class="goal-text">⚽ GOOOAL!</span></div>
-<div class="goal-banner" id="critBanner"><span class="crit-text">💥 暴击！</span></div>
-<div class="skill-banner" id="skillBanner"><span class="skill-text" id="skillText"></span></div>
 
 <script>
     // ===================================================================
@@ -805,39 +680,32 @@
         return Math.min(Math.max(prob, 0.10), 0.35);
     }
 
-    // 进球特效：比分闪光 + 全屏 GOAL 庆祝
-    function triggerGoalFlash(el) {
+    // 进球特效：比分闪光 + 国旗下方 GOAL 提示
+    function triggerGoalFlash(el, callEl) {
         el.classList.add('goal');
         setTimeout(() => el.classList.remove('goal'), 750);
-
-        // 全屏闪光 + GOOOAL! 文字
-        goalOverlay.classList.add('show');
-        goalBanner.classList.remove('show');
-        void goalBanner.offsetHeight;
-        goalBanner.classList.add('show');
-
-        setTimeout(() => {
-            goalOverlay.classList.remove('show');
-            goalBanner.classList.remove('show');
-        }, 1400);
+        callEl.textContent = '⚽ GOAL!';
+        callEl.style.color = '#f7e05e';
+        callEl.classList.add('show');
+        setTimeout(() => callEl.classList.remove('show'), 1500);
     }
 
-    // 暴击特效：💥 暴击！文字（红橙配色 + 弹跳更强）
-    function triggerCrit(el) {
+    // 暴击特效：比分闪光 + 国旗下方 暴击 提示
+    function triggerCrit(el, callEl) {
         el.classList.add('goal');
         setTimeout(() => el.classList.remove('goal'), 750);
+        callEl.textContent = '💥 暴击！';
+        callEl.style.color = '#ff4444';
+        callEl.classList.add('show');
+        setTimeout(() => callEl.classList.remove('show'), 1500);
+    }
 
-        // 全屏闪光
-        goalOverlay.classList.add('show');
-        // 暴击 banner
-        critBanner.classList.remove('show');
-        void critBanner.offsetHeight;
-        critBanner.classList.add('show');
-
-        setTimeout(() => {
-            goalOverlay.classList.remove('show');
-            critBanner.classList.remove('show');
-        }, 1600);
+    // 技能发动提示：国旗下方技能名
+    function triggerSkill(teamName, skillName, callEl) {
+        callEl.textContent = `⚡ ${skillName}`;
+        callEl.style.color = '#00d4ff';
+        callEl.classList.add('show');
+        setTimeout(() => callEl.classList.remove('show'), 1500);
     }
 
     // ====== 技能系统 ======
@@ -853,7 +721,6 @@
         '奥地利':[82,83,80],'韩国':[83,80,87],'澳大利亚':[81,82,79],
         '阿尔及利亚':[82,81,81],'埃及':[80,83,79],'加拿大':[81,79,84],
         '挪威':[84,80,81],'科特迪瓦':[83,80,83],'巴拿马':[79,80,79],
-        '瑞典':[80,82,79],'巴拉圭':[79,81,79],'苏格兰':[80,80,80],
         '捷克':[80,81,79],'突尼斯':[78,81,78],'刚果民主共和国':[79,79,80],
         '乌兹别克斯坦':[79,79,78],'卡塔尔':[78,78,79],'伊拉克':[78,79,77],
         '南非':[77,78,79],'沙特阿拉伯':[77,78,78],'约旦':[76,78,77],
@@ -925,18 +792,12 @@
         return SKILL_DATA[key] || SKILL_DATA[SKILL_NAME_MAP[key.toLowerCase()]] || null;
     }
 
-    // 技能发动提示：横幅 + 国旗下方
-    function triggerSkill(teamName, skillName, el) {
-        skillText.textContent = `✦ ${teamName} · ${skillName} ✦`;
-        skillBanner.classList.remove('show');
-        void skillBanner.offsetHeight;
-        skillBanner.classList.add('show');
-        setTimeout(() => skillBanner.classList.remove('show'), 1300);
-
-        // 国旗下方显示技能名
-        el.textContent = `⚡ ${skillName}`;
-        el.classList.add('show');
-        setTimeout(() => el.classList.remove('show'), 1500);
+    // 技能发动提示：国旗下方技能名
+    function triggerSkill(teamName, skillName, callEl) {
+        callEl.textContent = `⚡ ${skillName}`;
+        callEl.style.color = '#00d4ff';
+        callEl.classList.add('show');
+        setTimeout(() => callEl.classList.remove('show'), 1500);
     }
 
     // ===================================================================
@@ -962,11 +823,6 @@
     const fullTimeBox = document.getElementById('fullTimeBox');
     const ftA = document.getElementById('ftA');
     const ftB = document.getElementById('ftB');
-    const goalOverlay = document.getElementById('goalOverlay');
-    const goalBanner  = document.getElementById('goalBanner');
-    const critBanner  = document.getElementById('critBanner');
-    const skillBanner = document.getElementById('skillBanner');
-    const skillText   = document.getElementById('skillText');
     const skillCallA  = document.getElementById('skillCallA');
     const skillCallB  = document.getElementById('skillCallB');
     const btnRoll  = document.getElementById('btnRoll');
@@ -1048,10 +904,6 @@
         numB.textContent = '0';
         halfTimeBox.classList.remove('show');
         fullTimeBox.classList.remove('show');
-        goalOverlay.classList.remove('show');
-        goalBanner.classList.remove('show');
-        critBanner.classList.remove('show');
-        skillBanner.classList.remove('show');
         skillCallA.classList.remove('show'); skillCallA.textContent = '';
         skillCallB.classList.remove('show'); skillCallB.textContent = '';
         // 清空上半场/全场文字，防止缓存残留
@@ -1100,8 +952,8 @@
                 // --- 进球 ROLL ---
                 const goalA = Math.random() < goalChance(effAtkA, effDefB);
                 const goalB = Math.random() < goalChance(effAtkB, effDefA);
-                if (goalA) { curA++; triggerGoalFlash(scoreA); }
-                if (goalB) { curB++; triggerGoalFlash(scoreB); }
+                if (goalA) { curA++; triggerGoalFlash(scoreA, skillCallA); }
+                if (goalB) { curB++; triggerGoalFlash(scoreB, skillCallB); }
                 numA.textContent = curA;
                 numB.textContent = curB;
 
@@ -1109,10 +961,10 @@
                 const critRateA = 0.005 + (effAgiA / 100) * 0.045;
                 const critRateB = 0.005 + (effAgiB / 100) * 0.045;
                 if (Math.random() < critRateA) {
-                    curA += 2; triggerCrit(scoreA);
+                    curA += 2; triggerCrit(scoreA, skillCallA);
                 }
                 if (Math.random() < critRateB) {
-                    curB += 2; triggerCrit(scoreB);
+                    curB += 2; triggerCrit(scoreB, skillCallB);
                 }
                 numA.textContent = curA;
                 numB.textContent = curB;
@@ -1167,10 +1019,6 @@
         clockDisplay.textContent = "0'";
         halfTimeBox.classList.remove('show');
         fullTimeBox.classList.remove('show');
-        goalOverlay.classList.remove('show');
-        goalBanner.classList.remove('show');
-        critBanner.classList.remove('show');
-        skillBanner.classList.remove('show');
         skillCallA.classList.remove('show'); skillCallA.textContent = '';
         skillCallB.classList.remove('show'); skillCallB.textContent = '';
         htA.textContent = '0'; htB.textContent = '0';
