@@ -1,8 +1,8 @@
 {
-  "name": "美加墨世界杯 · 比分模拟器",
-  "short_name": "世界杯模拟器",
-  "description": "模拟美加墨世界杯比赛比分，输入队名、看国旗、ROLL点决定胜负！",
-  "start_url": "worldcup-score.html",
+  "name": "\u7f8e\u52a0\u58a8\u4e16\u754c\u676f \u00b7 \u6bd4\u5206\u6a21\u62df\u5668",
+  "short_name": "\u4e16\u754c\u676f\u6a21\u62df\u5668",
+  "description": "\u6a21\u62df\u7f8e\u52a0\u58a8\u4e16\u754c\u676f\u6bd4\u8d5b\u6bd4\u5206\uff0c\u8f93\u5165\u961f\u540d\u3001\u770b\u56fd\u65d7\u3001ROLL\u70b9\u51b3\u5b9a\u80dc\u8d1f\uff01",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0d1b0d",
